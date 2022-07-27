@@ -1,7 +1,7 @@
 package com.lin.auth.interceptor;
 
 import com.alibaba.fastjson.JSONObject;
-import com.lin.auth.utils.RSAUtil;
+import com.lin.auth.utils.RSAUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -40,13 +40,13 @@ public class InterceptorConfig implements HandlerInterceptor {
             String key = String.valueOf(iterator.next());
             tm.put(key,map.get(key));
         }
-        Map<String, Object> keyMap = RSAUtil.initKey();
-        String publicKey = RSAUtil.publicKey;
+        Map<String, Object> keyMap = RSAUtils.initKey();
+        String publicKey = RSAUtils.publicKey;
         String mapSorStr = JSONObject.toJSONString(tm);
         logger.info("传过来的字符串：mapSorStr：{}",mapSorStr);
 
         // 公钥验证
-        boolean flagB = RSAUtil.verify(mapSorStr.getBytes(StandardCharsets.UTF_8), sign, publicKey);
+        boolean flagB = RSAUtils.verify(mapSorStr.getBytes(StandardCharsets.UTF_8), sign, publicKey);
         if(flagB){
             return true;
         }else {

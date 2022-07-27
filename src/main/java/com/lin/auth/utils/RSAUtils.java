@@ -19,7 +19,7 @@ import java.util.TreeMap;
 /**
  * RSA加密解密,签名和验证工具类
  */
-public class RSAUtil {
+public class RSAUtils {
     /**加密算法为RSA*/
     public static final String KEY_ALGORITHM = "RSA";
 
@@ -247,7 +247,7 @@ public class RSAUtil {
     }
 
 
-
+// 测试
     public static void main(String[] args) throws Exception {
         String name = "hello word";
         Map<String, Object> keyMap = initKey();
