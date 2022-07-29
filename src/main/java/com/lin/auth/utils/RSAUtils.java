@@ -250,27 +250,27 @@ public class RSAUtils {
 // 测试
     public static void main(String[] args) throws Exception {
         String name = "hello word";
-        Map<String, Object> keyMap = initKey();
-        String publicKeyStr = getPublicKeyStr(keyMap);
-        String privateKeyStr = getPrivateKeyStr(keyMap);
-        System.out.println("publicKeyStr:"+publicKeyStr);
-        System.out.println("privateKeyStr:"+privateKeyStr);
-
-        byte[] encrypt = encrypt(name.getBytes(StandardCharsets.UTF_8), publicKeyStr);
-        System.out.println("加密后为："+new String(encrypt));
-
-        byte[] decrypt = decrypt(encrypt, privateKeyStr);
-        System.out.println("解密后为："+new String(decrypt));
+//        Map<String, Object> keyMap = initKey();
+//        String publicKeyStr = getPublicKeyStr(keyMap);
+//        String privateKeyStr = getPrivateKeyStr(keyMap);
+//        System.out.println("publicKeyStr:"+publicKeyStr);
+//        System.out.println("privateKeyStr:"+privateKeyStr);
+//
+//        byte[] encrypt = encrypt(name.getBytes(StandardCharsets.UTF_8), publicKeyStr);
+//        System.out.println("加密后为："+new String(encrypt));
+//
+//        byte[] decrypt = decrypt(encrypt, privateKeyStr);
+//        System.out.println("解密后为："+new String(decrypt));
 
         TreeMap map = new TreeMap<>();
-        map.put("age",20);
+        map.put("age","20");
         map.put("name","张三");
         String str = JSONObject.toJSONString(map);
         System.out.println(str);
-        byte[] sign = sign(str.getBytes(StandardCharsets.UTF_8), privateKeyStr);
+        byte[] sign = sign(str.getBytes(StandardCharsets.UTF_8), privateKey);
         System.out.println(Base64.encodeBase64String(sign));
 
-        boolean verify = verify(str.getBytes(StandardCharsets.UTF_8), sign, publicKeyStr);
+        boolean verify = verify(str.getBytes(StandardCharsets.UTF_8), sign, publicKey);
         System.out.println(verify);
 
 

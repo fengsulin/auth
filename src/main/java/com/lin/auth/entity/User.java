@@ -6,10 +6,10 @@ public class User implements Serializable {
     private static final long serialVersionUID = 1345L;
 
     private String name;
-    private Integer age;
+    private String age;
 
     public User(){}
-    public User(String name, Integer age) {
+    public User(String name, String age) {
         this.name = name;
         this.age = age;
     }
@@ -22,11 +22,11 @@ public class User implements Serializable {
         this.name = name;
     }
 
-    public Integer getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(String age) {
         this.age = age;
     }
 
