@@ -17,7 +17,7 @@ import java.net.UnknownHostException;
  */
 public class IpUtils {
 
-    private final Logger logger = LoggerFactory.getLogger(IpUtils.class);
+    private static final Logger logger = LoggerFactory.getLogger(IpUtils.class);
 
     /**
      * 获取ip地址
@@ -90,7 +90,7 @@ public class IpUtils {
      * @param ip：需要查询的ip
      * @return String：返回ip所在地字符串
      */
-    public String getIpOnlyFile(String dbPath,String ip) {
+    public static String getIpOnlyFile(String dbPath,String ip) {
         // 1、创建 searcher 对象
         Searcher searcher = null;
         String region = null;
@@ -120,7 +120,7 @@ public class IpUtils {
      * @param ip：需要查询的ip
      * @return String：返回ip所在地字符串
      */
-    public String getIpWithCache(String dbPath,String ip){
+    public static String getIpWithCache(String dbPath,String ip){
         // 1、从 dbPath 中预先加载 VectorIndex 缓存，并且把这个得到的数据作为全局变量，后续反复使用。
         byte[] vIndex = new byte[0];
         // 2、使用全局的 vIndex 创建带 VectorIndex 缓存的查询对象。
@@ -152,7 +152,7 @@ public class IpUtils {
      * @param ip：需要查询的ip
      * @return String：返回ip所在地字符串
      */
-    public String getIpWithAllCache(String dbPath,String ip){
+    public static String getIpWithAllCache(String dbPath,String ip){
         // 1、从 dbPath 加载整个 xdb 到内存。
         byte[] cBuff;
         // 2、使用上述的 cBuff 创建一个完全基于内存的查询对象。

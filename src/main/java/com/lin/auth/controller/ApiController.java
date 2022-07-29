@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.net.SocketException;
+import java.net.URL;
 import java.net.UnknownHostException;
 
 @RestController
@@ -23,6 +24,9 @@ public class ApiController {
     @PostMapping("/sign")
     public void testSign(@RequestBody User user,HttpServletRequest request) throws IOException {
         String ipAddress = IpUtils.getIpAddress(request);
+        URL resource = this.getClass().getClassLoader().getResource("data/ip2region.xdb");
+        String ipOnlyFile = IpUtils.getIpOnlyFile(resource.getPath(), ipAddress);
+        System.out.println(ipOnlyFile);
         System.out.println(ipAddress);
         try {
             String macAddress = IpUtils.getMacAddress();
